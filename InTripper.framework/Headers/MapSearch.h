@@ -57,6 +57,13 @@ typedef NS_ENUM(NSInteger, SearchType) {
  */
 -(id)init:(SearchType)searchFor;
 
+/**
+ Initializes search APIs
+
+ @param searchFor Enum of SearchType (Search_POI/Search_Amenity)
+ @param show heighlight area
+ @return Instance of MapSearch class
+ */
 -(id)init:(SearchType)searchFor showArea:(BOOL)show;
 
 /**

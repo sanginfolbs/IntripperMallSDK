@@ -2,7 +2,7 @@
 //  IntripperMap.h
 //  Intripper
 //
-//  Created by Sanginfo on 20/01/16.
+//  Created by Intripper on 20/01/16.
 //  Copyright © 2017-18 InTripper. All rights reserved.
 //
 
@@ -65,9 +65,23 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 @protocol IntripperMapDelegate<NSObject>
 
 @optional
--(void)IndoorMapLoaded:(id)sender;
-    
+
+/**
+ * Called after map loaded
+ *
+ * @param sender The mapview that was pressed
+ *
+ */
+-(void)IndoorMapLoaded:(id)sender __deprecated_msg("use intripper: loaded: instead.");
+
+/**
+ Called after map loaded on screen
+ 
+ @param sender  the mapview that passed
+ @param isLoaded true/false always return true
+ */
 -(void)intripper:(id)sender loaded:(BOOL)isLoaded;
+
 /**
  *  Called after a long-press gesture at a particular coordinate.
  *
@@ -76,6 +90,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param level      The current level/floor on the mapview where the long-press gesture was triggered.
  */
 -(void)intripper:(id)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate floor:(int)level;
+
 /**
  *  Called after a tap gesture at a particular coordinate
  *
@@ -103,9 +118,16 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  Called after the application desires to display route between two points.
  *
  *  @param mapView   The mapview where the route will be drawn.
- *  @param routeList An array of geojson objects 
+ *  @param routeList An array of geojson objects
  */
 -(void)intripper:(id)mapView route:(NSArray *)routeList;
+
+/**
+ Called when search route failed to get route
+
+ @param mapView The mapview where the route will be drawn.
+ @param routeList empty route list
+ */
 -(void)intripper:(id)mapView noRoute:(NSArray *)routeList;
 /**
  *  Called when user wants turn by turn instructions.
@@ -125,6 +147,12 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 -(void)intripper:(id)mapView reRouteWithLocation:(CLLocationCoordinate2D)coordinate floor:(int)level;
 
 
+/**
+ Called when navigation interupted by user
+
+ @param mapView The mapview that caused the event to trigger
+ @param coordinate True/false always return true
+ */
 -(void)intripper:(id)mapView navigationInterrupted:(BOOL)coordinate;
 
 /**
@@ -200,41 +228,133 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 -(void) intripper:(id)mapView mapAtIdlePostion:(float)zoomlevel;
 
 /**
-*  Description
-*
-*  @param mapView   mapView description
-*  @param zoomlevel zoomlevel description
-*/
+ *  Description
+ *
+ *  @param mapView   mapView description
+ *  @param zoomlevel zoomlevel description
+ */
 -(void) intripper:(id)mapView mapSlide:(float)zoomlevel;
 
 
 
+/**
+ Called when building changed
+
+ @param mapView mapView description
+ @param levelList List of levels in building
+ @param heightList List of height in building for each levels
+ @param name building name
+ */
 -(void) intripper:(id)mapView buildingChange:(NSArray *)levelList heights:(NSArray *)heightList building:(NSString *)name;
-    
+
+
+/**
+ Called when building changed
+
+ @param mapView The mapview where build changed
+ @param buildinginfo more information about building
+ */
 -(void) intripper:(id)mapView buildingViewChange:(NSDictionary *)buildinginfo;
 
 /**
- *  Description
- *
- *  @param latitude  latitude description
- *  @param longitude longitude description
+ Showing labels on map
+
+ @param mapView The mapview where lables renders
+ @param iconImage icon of lables
+ @param areaName text on labels
+ @param baseString english version of label
+ @return True/False
  */
--(void)SetBlueDotOnLongPress:(double)latitude longitude:(double)longitude;
+-(BOOL) intripper:(id)mapView showTextWithIcon:(UIImage **)iconImage andText:(NSString **)areaName basetext:(NSString *)baseString;
 
--(BOOL) intripper:(id)mapView showTextWithIcon:(UIImage **)iconImage andText:(NSString **)areaName;
 
+/**
+ Showing labels on map
+
+ @param mapView The mapview where lables renders
+ @param imageurl external image URL for label
+ @param areaName Name of  labels
+ @return True/False
+ */
 -(UIView *) intripper:(id)mapView customizeAreaName:(NSString *)imageurl andText:(NSString *)areaName;
 
 
+/**
+ Customize POI pin marker
+
+ @param mapview The mapview where pin renders
+ @param imgPin Image of pin from SDK
+ @return UIView to render for marker
+ */
 -(UIView *)intripper:(id)mapview customizePOIPin:(UIImage *)imgPin;
 
+
+/**
+ Customize start marker
+
+ @param mapview The mapview where start marker render
+ @param imgPin image from SDK
+ @return customize view for start marker
+ */
 -(UIView *)intripper:(id)mapview customizeStartMarker:(UIImage *)imgPin;
+
+/**
+ Customize end marker
+
+ @param mapview The mapview where end marker render
+ @param imgPin image from SDK
+ @return customize view for end marker
+ */
 -(UIView *)intripper:(id)mapview customizeEndMarker:(UIImage *)imgPin;
+
+/**
+ Customize level changed marker
+
+ @param mapview The mapview where level marker render
+ @param imgPin image from SDK
+ @param up Moving up direction
+ @return View to display on map
+ */
 -(UIView *)intripper:(id)mapview customizeLevelChangedMarker:(UIImage *)imgPin movingUp:(BOOL)up;
 
+/**
+ Customize level changed marker
+
+ @param mapview The mapview where level marker render
+ @param imgPin image from SDK
+ @param up Moving up direction
+ @param nearStart  atstart point
+ @return View to display on map
+ */
+-(UIView *)intripper:(id)mapview customizeLevelChangedMarker:(UIImage *)imgPin movingUp:(BOOL)up atStart:(BOOL)nearStart;
+
+
+/**
+ Anchor point where marker render default(.0,.5)
+
+ @param mapview The mapview where level marker render
+ @param refAnchor SDK marker point
+ @return Changed marker point
+ */
 -(CGPoint)intripper:(id)mapview LevelChangedMarkerAnchor:(CGPoint)refAnchor;
 
+/**
+ Customize building anchor
+
+ @param mapview The mapview where level marker render
+ @param imgPin image from SDK
+ @param buildingref building number
+ @return view of building method
+ */
 -(UIView *)intripper:(id)mapview customizeBuildingChangedMarker:(UIImage *)imgPin building:(NSString *)buildingref;
+
+/**
+ Customize building anchor
+
+ @param mapview The mapview where level marker render
+ @param refAnchor anchore point set by sdk
+ @return new Anchor point
+ */
 -(CGPoint)intripper:(id)mapview BuildingChangedMarkerAnchor:(CGPoint)refAnchor;
 @end
 /**
@@ -248,7 +368,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 /**
  *  Sets the VenueID for the map.
  */
-    @property (nonatomic,retain) NSString *VenueID;
+@property (nonatomic,retain) NSString *VenueID;
 /**
  *  Sets the default floor to be shown when the map loads.
  */
@@ -262,42 +382,46 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 @property (nonatomic,retain) NSString *ActiveBuildingID;
 /**
- *  Controls whether the map uses custom tiles (Default renderer for Custom Tiles is MapBox) 
+ *  Controls whether the map uses custom tiles (Default renderer for Custom Tiles is MapBox)
  *  or Google Maps.
  */
-    @property (nonatomic,readwrite) BOOL useMapboxMap;
+@property (nonatomic,readwrite) BOOL useMapboxMap __deprecated_msg("invalid");
 
- @property (nonatomic,readwrite) BOOL useDebugMode;
+
+/**
+ Enable Debug mode to get user location from GPS default=NO
+ */
+@property (nonatomic,readwrite) BOOL useDebugMode __deprecated_msg("invalid");
 
 /**
  *  extended coordinate system use default=NO
  */
- @property (nonatomic,readwrite) BOOL useVirtualCoordinate;
+@property (nonatomic,readwrite) BOOL useVirtualCoordinate __deprecated_msg("invalid");
 /**
  *  Controls whether user can abandon navigation during navigation mode.
  */
 
-    @property (nonatomic,readwrite) BOOL allowUserToInterruptNavigation;
+@property (nonatomic,readwrite) BOOL allowUserToInterruptNavigation;
 /**
- *  Highlight store on navagation mode
+ *  Highlight store on navagation mode default=NO
  */
-    @property (nonatomic,readwrite) BOOL showStoreDuringNavigation;
+@property (nonatomic,readwrite) BOOL showStoreDuringNavigation;
 /**
- *  Gets the current Navigation mode.
+ *  Gets the current Navigation mode. default=NavigationMode_None
  */
-    @property (nonatomic,readonly,  getter = getCurrentMapMode) NavigationMode CurrentMapMode;
+@property (nonatomic,readonly,  getter = getCurrentMapMode) NavigationMode CurrentMapMode;
 /**
  *  IntripperMapDelegate delegate
  */
-    @property(nonatomic,weak) id <IntripperMapDelegate> mapdelegate;
+@property(nonatomic,weak) id <IntripperMapDelegate> mapdelegate;
 /**
  *  S Navigation  path
  */
-   @property (copy) PathFormatterBlock pathOptions;
+@property (copy) PathFormatterBlock pathOptions;
 /**
  *  Controls whether the mapview's inbuilt floor selector is to be shown. Set NO if the application wants to create custom floor selector.
  */
-    @property (nonatomic,readwrite) BOOL enableFloorSelector;
+@property (nonatomic,readwrite) BOOL enableFloorSelector;
 /**
  *  Is User OnSite or not
  */
@@ -308,8 +432,16 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 @property (nonatomic,readwrite) BOOL hideMapProvider;
 
+
+/**
+ Text color of label to render on map
+ */
 @property(nonatomic,retain) UIColor *textColor;
 
+
+/**
+ Rotate map and keep user location pointing to upwoard only Default=false
+ */
 @property (nonatomic,readwrite) BOOL rotateMapWithNorthHeading;
 
 /**
@@ -325,9 +457,12 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(NavigationMode)getCurrentMapMode;
 
-//Methods
-    -(void)autoFit;
-//Markers
+
+/**
+ resize map according to container size
+ */
+-(void)autoFit;
+
 /**
  *  Displays a marker on the mapview.
  *
@@ -335,7 +470,8 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param level      Floor Level
  *  @param Title      Title to display on the marker window
  */
-    -(void)showMarker:(CLLocationCoordinate2D)coordinate floor:(int)level title:(NSString *)Title;
+-(void)showMarker:(CLLocationCoordinate2D)coordinate floor:(int)level title:(NSString *)Title;
+
 //User Location
 /**
  *  Sets the user's current position (blue dot) on the map.
@@ -343,14 +479,15 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param latitude  Latitude
  *  @param longitude Longitude
  */
-    -(void)setBlueDot:(double)latitude longitude:(double)longitude;
+-(void)setBlueDot:(double)latitude longitude:(double)longitude;
+
 /**
  *  Sets the user's current position (blue dot) on the map.
  *
  *  @param location The location of the user's current position.
  *  @param level    The floor level of the user's current position.
  */
-    -(void)setBlueDot:(CLLocation *)location onFloor:(int)level;
+-(void)setBlueDot:(CLLocation *)location onFloor:(int)level;
 
 /**
  *  Sets the user's current position (Gray dot) on the map.
@@ -374,7 +511,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *
  *  @return The latitude, longitude and floor level of the user's position.
  */
-    -(CGIndoorMapPoint)userLocation;
+-(CGIndoorMapPoint)userLocation;
 /**
  *  Returns the information of the tapped area on the map.
  *
@@ -383,12 +520,12 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *
  *  @return Returns a dictionary of the tapped area.
  */
-    -(NSDictionary *) getTappedAreaInfo :(CLLocation *)location onFloor:(int)level;
+-(NSDictionary *) getTappedAreaInfo :(CLLocation *)location onFloor:(int)level;
 /**
  *  Centers the blue dot in the map view.
  */
-    -(void)centerBlueDot;
-    
+-(void)centerBlueDot;
+
 //Routing
 /**
  *  Finds the path from source to destination.
@@ -396,7 +533,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param startPoint Source Coordinates
  *  @param endPoint   Destination Coordinates
  */
-    -(void)FindRoute:(CGIndoorMapPoint)startPoint destination:(CGIndoorMapPoint)endPoint;
+-(void)FindRoute:(CGIndoorMapPoint)startPoint destination:(CGIndoorMapPoint)endPoint;
 /*
  *@depricated
  *use FindRoute
@@ -409,36 +546,36 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param endPoint       Destination Coordinates
  *  @param cutAtEnterance BOOL flag
  */
-    -(void)FindRoute:(CGIndoorMapPoint)startPoint destination:(CGIndoorMapPoint)endPoint uptoDoor:(BOOL)cutAtEnterance;
+-(void)FindRoute:(CGIndoorMapPoint)startPoint destination:(CGIndoorMapPoint)endPoint uptoDoor:(BOOL)cutAtEnterance;
 /**
  *  Ends the navigation when user's navigation mode is NavigationMode_TurnByTurn
  */
-    -(void)exitNavigation;
+-(void)exitNavigation;
 /**
  *  Called when allowUserToInterruptNavigation is set to TRUE
  */
-    -(void)resumeNavigation;
+-(void)resumeNavigation;
 //Instruction
 /**
  *  Sets the corresponding instruction for navigation for the selected index.
  *
  *  @param instructionIndex The index for getting the instruction.
  */
-    -(void)StepToInstruction:(NSInteger)instructionIndex;
+-(void)StepToInstruction:(NSInteger)instructionIndex;
 /**
- *  Sets the corresponding instruction for the next step. 
-    The user's navigation mode should be NavigationMode_TurnByTurn.
-    Useful when user wants to scoll through a set of instructions.
+ *  Sets the corresponding instruction for the next step.
+ The user's navigation mode should be NavigationMode_TurnByTurn.
+ Useful when user wants to scoll through a set of instructions.
  */
-    -(void)NextStepInstruction;
+-(void)NextStepInstruction;
 /**
  *  Sets the corresponding instruction for navigation for the previous step.
-    The user's navigation mode should be NavigationMode_TurnByTurn.
-    Useful when user wants to scoll through a set of instructions.
+ The user's navigation mode should be NavigationMode_TurnByTurn.
+ Useful when user wants to scoll through a set of instructions.
  */
-    -(void)PreviousStepInstruction;
+-(void)PreviousStepInstruction;
 //Re-Route New Path
-    -(void)ReRoute:(CLLocationCoordinate2D)coordinate floor:(int)level;
+-(void)ReRoute:(CLLocationCoordinate2D)coordinate floor:(int)level;
 
 /**
  *  Suppress reroute event For 5 seconds
@@ -450,7 +587,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *
  *  @param floor The floor to be set.
  */
-    - (void) changeFloor:(int) floor;
+- (void) changeFloor:(int) floor;
 /**
  *  Removes current markers from the mapview.
  */
@@ -487,21 +624,27 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *
  *  @return Returns the a unique floor plan ID.
  */
-    -(NSString *) LocationFloorRef:(int) floor;
+-(NSString *) LocationFloorRef:(int) floor;
 
- -(int) ExternalFloorForFloorRef:(NSString *) floorref;
+/**
+ External Floor refrence id
+
+ @param floorref Floor number
+ @return refrence number
+ */
+-(int) ExternalFloorForFloorRef:(NSString *) floorref;
 /**
  *  Gets the API key for the indoor positioning services.
  *
  *  @return The API key for the indoor positioning services.
  */
-    -(NSString *)IAAPIapikey;
+-(NSString *)IAAPIapikey;
 /**
  *  Gets the API secret for the indoor positioning services.
  *
  *  @return The API secret for the indoor positioning services.
  */
-    -(NSString *)IAAPIapiSecret;
+-(NSString *)IAAPIapiSecret;
 
 /**
  *  Gets the API secret for the indoor positioning services.
@@ -515,7 +658,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *
  *  @return NSArray of floor plan IDs
  */
-    -(NSArray *)LocationFloorRefID;
+-(NSArray *)LocationFloorRefID;
 
 //Tracking
 /**
@@ -543,20 +686,26 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(NSArray *)AllStoreInformation;
 /**
- *  <#Description#>
+ *  Center map at given location
  *
- *  @param mp        <#mp description#>
- *  @param zoomlevel <#zoomlevel description#>
+ *  @param mp        location point
+ *  @param zoomlevel map zoom level
  */
 
 -(void)centerMapWithLocation:(CGIndoorMapPoint)mp andZoom:(float)zoomlevel;
 /**
- *  <#Description#>
+ *  Return true if user location visible on map
  *
- *  @return <#return value description#>
+ *  @return True/False
  */
 -(BOOL)isBlueDotVisibleOnMap;
 
+
+/**
+ Return true if street view loaded
+
+ @return True/False
+ */
 -(BOOL)isStreetViewLoaded;
 
 /**
@@ -568,19 +717,45 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(void)closeStreetView;
 
+/**
+ By given point findout nearest elevator/Escalator/Ramp/starecase
+
+ @param refPoint ref point
+ @return return modeof transport
+ */
 -(FloorConntectedBy)getModeOfTransport:(CGIndoorMapPoint)refPoint;
 
--(CGIndoorMapPoint)getModeOfTransportPointTo:(CGIndoorMapPoint)refPoint;
-    -(int)floorIndexInBuildingArray:(NSArray *)buldingarray;
+/**
+ Get connecting point from given point
 
+ @param refPoint refPoint
+ @return new point on top/bottom level
+ */
+-(CGIndoorMapPoint)getModeOfTransportPointTo:(CGIndoorMapPoint)refPoint;
+
+
+/**
+ Get Floor index in Array for current floor
+
+ @param buldingarray List of level array
+ @return return index value in list
+ */
+-(int)floorIndexInBuildingArray:(NSArray *)buldingarray;
+
+
+/**
+ Animating train
+
+ @param train test
+ */
 -(void)AddTrain:(AnimatingTrainMarker *)train;
 
 
 /**
-*  Adds a Area on the map.
-*
-*  @param tracking An instance of the class <<TrackingAreaMarker>>
-*/
+ *  Adds a Area on the map.
+ *
+ *  @param tracking An instance of the class <<TrackingAreaMarker>>
+ */
 -(void)addTrackingArea:(TrackingAreaMarker *)tracking;
 
 /**
@@ -588,5 +763,10 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(void)RemoveAllTrackingArea;
 
+/**
+ Area coordinate for map bound
+
+ @return return coordinate list of map borders
+ */
 -(NSArray *)mapAreaBounds;
 @end

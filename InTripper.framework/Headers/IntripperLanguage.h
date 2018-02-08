@@ -9,8 +9,28 @@
 #import <Foundation/Foundation.h>
 
 @interface IntripperLanguage : NSObject
-    + (IntripperLanguage *)instance;
-    -(void)setNewLocal:(int)mapid Local:(NSString *)locallanguage;
+
+/**
+ Language service
+ 
+ @return return language service
+ */
++ (IntripperLanguage *)instance;
+
+/**
+ set local for language service
+ 
+ @param mapid mapref
+ @param locallanguage lnaguage local
+ */
+-(void)setNewLocal:(int)mapid Local:(NSString *)locallanguage;
+
+/**
+ Translate word into langiage
+
+ @param word word in english
+ @return in local language
+ */
 -(NSString *)translate:(NSString *)word;
 
 @end

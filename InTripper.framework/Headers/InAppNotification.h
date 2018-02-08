@@ -19,6 +19,11 @@
 
 +(NSMutableArray *)getlist;
 
+/**
+ To get notification data
+
+ @return notification data
+ */
 -(NSMutableDictionary *)getnotificationDetails;
 -(id)init :(NSString *)ptr;
 -(void)getDetails;

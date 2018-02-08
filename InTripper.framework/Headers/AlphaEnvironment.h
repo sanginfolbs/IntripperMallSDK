@@ -306,6 +306,12 @@ extern NSString *const kResourceBundle;
  */
 -(void)setUserInMall:(BOOL)set;
 
+
+/**
+ get location service enable or not
+
+ @return BOOL value
+ */
 -(BOOL)getLocationServiceEnabled;
 /**
  *  Set LocationService Enable
@@ -314,6 +320,19 @@ extern NSString *const kResourceBundle;
  */
 
 -(void)setLocationServiceEnabled:(BOOL)set;
+
+/**
+ user location icon path
+
+ @return image file name in resource buindle
+ */
 - (NSString *)getBlueDotIconPath;
+
+/**
+ Resize image with new dimention
+ @param sourceImage Source image
+ @param i_width  new Width of image
+ @return New image with resize scale
+ */
 +(UIImage*)imageWithResizeImage: (UIImage*) sourceImage scaledToWidth: (float) i_width;
 @end

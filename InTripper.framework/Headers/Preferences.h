@@ -28,40 +28,157 @@ extern NSString *const PREF_COUNTRYCODE;
 
 @interface Preferences : NSObject
 
-///Get Preferences value for given key
-+(NSString *)getPreferences : (NSString *)key;
-///Update Preferences Value for given key
+
 /**
- if key is present in preferences table value get updated
- else new row get created in same table to store value
+ To get value of the prefernce
+
+ @param key The name of the preference
+ @return Returns the string value of preference
+ */
++(NSString *)getPreferences : (NSString *)key;
+
+/**
+ To set preferences
+
+ @param key The name of the preference
+ @param preferencesValue The value of the preference
+ @return Returns whether prefernce is set or not
  */
 +(BOOL)setPreferences : (NSString *)key forValue : (NSString *)preferencesValue;
-///Update attributes value
-/**List of attributes
- - Display
- - min
- - max
- - Type
+
+/**
+ To set attributes
+
+ @param key The name of the attribute
+ @param preferencesValue The value of the attribute
+ @return Returns whether attribute is set or not
  */
 +(BOOL)setAttribute : (NSString *)key forValue : (NSDictionary *)preferencesValue;
 
-///Application user name
+/**
+ To get user name
+
+ @return Returns name of user
+ */
 +(NSString *)getOwnerName;
+
+/**
+ To get user email address
+ 
+ @return Returns email id of user
+ */
 +(NSString *)getEmail;
+
+/**
+ To get user phone number
+ 
+ @return Returns phone number of user
+ */
 +(NSString *)getPhone;
+
+/**
+ To get an organisation name
+ 
+ @return Returns an organisation name
+ */
 +(NSString *)getOrg;
+
+/**
+ To get an user's designation
+ 
+ @return Returns designation of user
+ */
 +(NSString *)getTitle;
+
+/**
+ To get notification id
+ 
+ @return Returns an id of notification
+ */
 + (NSString *) getNotificationID;
+
+/**
+ To get Mac address of device
+ 
+ @return Returns device's Mac address
+ */
 + (NSString *) getMyMacAddress;
+
+/**
+ To get Mac address of device
+ 
+ @return Returns device's Mac address
+ */
 + (NSString *) getSettingMacAddress;
+
+/**
+ To get venue id
+ 
+ @return Returns an id of the venue
+ */
 + (NSString *) getMap;
+
+/**
+ To get user's passcode for buddy finder
+ 
+ @return Returns passcode of user
+ */
 + (NSString *) getPassCode;
+
+/**
+ To get user name
+ 
+ @return Returns name of user
+ */
 + (NSInteger) getDiagnosticLevel;
+
+/**
+ To get an unique id of user
+ 
+ @return Returns user's id
+ */
 + (NSInteger) getRegisterID;
+
+/**
+ To get date of birth of user
+ 
+ @return Returns user birth date
+ */
 + (NSString *)getBirth;
+
+/**
+ To get gender of user
+ 
+ @return Returns user's gender
+ */
 + (NSString *)getGender;
+
+/**
+ To get user name
+ 
+ @return Returns name of user
+ */
 + (NSString *)getAccessToken;
+
+/**
+ To get wheter buddy finder is on or off
+ 
+ @return Returns buddy finder preference YES/NO
+ */
 + (BOOL) isBuddy_OptIn;
+
+/**
+ To get cache vesion
+ 
+ @return Returns version of cache
+ */
 + (NSInteger) getCacheVersion;
+
+/**
+ To get country code
+ 
+ @return Returns country code
+ */
 + (NSString *) getCountryCode;
+
 @end
