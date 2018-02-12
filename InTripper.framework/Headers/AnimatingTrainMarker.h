@@ -35,7 +35,7 @@
 @property (nonatomic,retain)NSArray *animationPath;
 
 /**
- Start animation train
+ Start train running animation
 
  @param map mapview
  */

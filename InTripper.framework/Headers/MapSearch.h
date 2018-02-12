@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, SearchType) {
 @interface MapSearch : NSObject
  @property(nonatomic,weak) id <MapSearchDelegate> mapSearchDelegate;
 /**
- *  Initializes search APIs
+ *  Initializes search API's
  *
  *  @param searchFor Enum of SearchType (Search_POI/Search_Amenity)
  *
@@ -58,24 +58,26 @@ typedef NS_ENUM(NSInteger, SearchType) {
 -(id)init:(SearchType)searchFor;
 
 /**
- Initializes search APIs
+ Initializes search API's
 
- @param searchFor Enum of SearchType (Search_POI/Search_Amenity)
- @param show heighlight area
- @return Instance of MapSearch class
+ *  @param searchFor SearchType (Search_POI/Search_Amenity)
+ *  @param show heighlight area
+ *
+ *  @return an instance of MapSearch class
  */
 -(id)init:(SearchType)searchFor showArea:(BOOL)show;
 
 /**
- *  Initializes search APIs
+ Initializes search API's
+
+ *  @param searchFor searchFor SearchType (Search_POI/Search_Amenity)
+ *  @param map ID of the map
  *
- *  @param searchFor Enum of SearchType (Search_POI/Search_Amenity)
- *
- *  @return Instance of MapSearch class.
+ *  @return an instance of MapSearch class
  */
 -(id)init:(SearchType)searchFor withMapid:(int)map;
 /**
- *  Performs the search operation by calling the relevant Search APIs.
+ *  Performs the search operation by calling the relevant Search API's.
  *
  *  @param text The text/term to search for.
  */
