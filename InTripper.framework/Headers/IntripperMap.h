@@ -422,7 +422,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 /**
  *  Highlight store on navagation mode default=NO
  */
-@property (nonatomic,readwrite) BOOL showStoreDuringNavigation;
+@property (nonatomic,readwrite) BOOL showAreaDuringNavigation;
 /**
  *  Gets the current Navigation mode. default=NavigationMode_None
  */
@@ -705,11 +705,11 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 -(void)removeTrackingMarker;
 //Map Information
 /**
- *  Gets the store data available for a particular venue.
+ *  Gets the Area data available for a particular venue.
  *
- *  @return NSArray of stores.
+ *  @return NSArray of area.
  */
--(NSArray *)allStoreInformation;
+-(NSArray *)allAreaInformation;
 
 /**
  Center map at given location

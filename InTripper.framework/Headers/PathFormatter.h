@@ -39,5 +39,5 @@
 /**
  *  Sets the color of the selected path.
  */
-@property (nonatomic,retain) UIColor *SelectedPathColor;
+@property (nonatomic,retain) UIColor *selectedPathColor;
 @end
