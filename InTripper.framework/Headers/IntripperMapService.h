@@ -50,4 +50,12 @@
  * Returns API Key for Intripper usage.
  */
 -(NSString *)intripperApiKey;
+
+
+/**
+ Intripper EndPoint URL
+
+ @return URL
+ */
+-(NSString *)endpointURL;
 @end

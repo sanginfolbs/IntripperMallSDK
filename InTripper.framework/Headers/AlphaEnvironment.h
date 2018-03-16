@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
-extern NSString *const kIndoorSDKURLString;
+
 extern NSString *const kIndoorid;
 extern NSString *const kIOAPIURLString;
 extern NSString *const kFuzzySearchAPIURLString;
