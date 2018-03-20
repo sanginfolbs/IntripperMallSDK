@@ -84,4 +84,6 @@
  @param extraFields User Attribute
  */
 -(void)registerMoreAttribute:(NSDictionary *)extraFields;
+
+-(void)registerForPushNotifications;
 @end
