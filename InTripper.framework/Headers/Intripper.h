@@ -1,10 +1,10 @@
-//
-//  Intripper.h
-//  Intripper
-//
-//  Created by Sanginfo on 19/01/16.
-//  Copyright © 2017-18 InTripper. All rights reserved.
-//
+/*!
+  Intripper.h
+  Intripper
+
+  Created by Sanginfo on 19/01/16.
+  Copyright © 2017-18 InTripper. All rights reserved.
+*/
 
 #import <InTripper/IntripperMap.h>
 #import <InTripper/IntripperAPI.h>

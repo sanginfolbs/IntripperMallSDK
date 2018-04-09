@@ -1,10 +1,10 @@
-//
-//  gpsIndoorObject.h
-//  Intripper
-//
-//  Created by Sanginfo on 20/01/16.
-//  Copyright © 2017-18 InTripper. All rights reserved.
-//
+/*!
+  gpsIndoorObject.h
+  Intripper
+
+  Created by Sanginfo on 20/01/16.
+  Copyright © 2017-18 InTripper. All rights reserved.
+*/
 
 #ifndef IndoorMapObject_h
 #define IndoorMapObject_h

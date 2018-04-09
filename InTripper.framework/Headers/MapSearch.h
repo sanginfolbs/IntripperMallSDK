@@ -1,10 +1,10 @@
-//
-//  MapSearch.h
-//  Intripper
-//
-//  Created by Sanginfo on 03/02/16.
-//  Copyright © 2017-18 InTripper. All rights reserved.
-//
+/*!
+  MapSearch.h
+  Intripper
+
+  Created by Sanginfo on 03/02/16.
+  Copyright © 2017-18 InTripper. All rights reserved.
+*/
 
 #import <Foundation/Foundation.h>
 #define ToRadian(x) ((x) * M_PI/180)
@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger, SearchType) {
 @end
 /**
  *  This is the class used for Search operations in the Intripper SDK.
-    The search object should be instantiated via the convenience constructor [[MapSearch alloc] init:<<SearchType>>];
  */
 @interface MapSearch : NSObject
  @property(nonatomic,weak) id <MapSearchDelegate> mapSearchDelegate;
@@ -57,23 +56,22 @@ typedef NS_ENUM(NSInteger, SearchType) {
  */
 -(id)init:(SearchType)searchFor;
 
+
 /**
  Initializes search API's
 
- *  @param searchFor SearchType (Search_POI/Search_Amenity)
- *  @param show heighlight area
- *
- *  @return an instance of MapSearch class
+ @param searchFor SearchType Search_POI/Search_Amenity
+ @param show heighlight area
+ @return an instance of MapSearch class
  */
 -(id)init:(SearchType)searchFor showArea:(BOOL)show;
 
 /**
  Initializes search API's
 
- *  @param searchFor searchFor SearchType (Search_POI/Search_Amenity)
- *  @param map ID of the map
- *
- *  @return an instance of MapSearch class
+ @param searchFor searchFor SearchType Search_POI/Search_Amenity
+ @param map ID of the map
+ @return an instance of MapSearch class
  */
 -(id)init:(SearchType)searchFor withMapid:(int)map;
 /**

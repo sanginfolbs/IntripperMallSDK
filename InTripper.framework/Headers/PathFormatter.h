@@ -1,10 +1,10 @@
-//
-//  PathFormatter.h
-//  Intripper
-//
-//  Created by Sanginfo on 03/02/16.
-//  Copyright © 2017-18 InTripper. All rights reserved.
-//
+/*!
+  PathFormatter.h
+  Intripper
+
+  Created by Sanginfo on 03/02/16.
+  Copyright © 2017-18 InTripper. All rights reserved.
+*/
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

@@ -255,4 +255,34 @@
  @return BOOL value
  */
 -(BOOL) useMapBoxMap;
+
+
+/**
+ Should display google map bellow indoormap or not
+
+ @return true/false
+ */
+-(BOOL)isLoadGoogleBasemap;
+
+/**
+ Display outline for floor
+
+ @param levelCode Level currently display
+ @param mapview map view on which area draw
+ */
+-(void)showOutlineForLevel:(int)levelCode onMap:(GMSMapView *)mapview;
+
+/**
+ Capture Default Floor which indoor map to display
+
+ @return Level Nimber
+ */
+-(int)initializeWithDefaultFloor;
+
+/**
+ Intripper Logo location
+
+ @return Position topleft, topright, bottomleft, bottomright
+ */
+-(NSString *)defaultLogoLocation;
 @end
