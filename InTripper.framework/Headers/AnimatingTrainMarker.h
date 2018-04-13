@@ -1,10 +1,10 @@
-//
-//  AnimatingTrainMarker.h
-//  Intripper
-//
-//  Created by apple on 08/10/17.
-//  Copyright © 2017 InTripper. All rights reserved.
-//
+/*!
+  AnimatingTrainMarker.h
+  Intripper
+
+  Created by apple on 08/10/17.
+  Copyright © 2017 InTripper. All rights reserved.
+*/
 
 #import <GoogleMaps/GoogleMaps.h>
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
-extern NSString *const kIndoorSDKURLString;
+
 extern NSString *const kIndoorid;
 extern NSString *const kIOAPIURLString;
 extern NSString *const kFuzzySearchAPIURLString;
@@ -335,4 +335,6 @@ extern NSString *const kResourceBundle;
  @return New image with resize scale
  */
 +(UIImage*)imageWithResizeImage: (UIImage*) sourceImage scaledToWidth: (float) i_width;
+
++ (CLLocationCoordinate2D)calculateCoordinateFrom:(CLLocationCoordinate2D)coordinate  onBearing:(double)bearingInDegree atDistance:(double)distanceInMetres;
 @end

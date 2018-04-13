@@ -1,13 +1,17 @@
-//
-//  IntripperMapService.h
-//  Intripper
-//
-//  Created by Sanginfo on 20/01/16.
-//  Copyright © 2017-18 InTripper. All rights reserved.
-//
+/*
+  IntripperMapService.h
+  Intripper
+
+  Created by Sanginfo on 20/01/16.
+  Copyright © 2017-18 InTripper. All rights reserved.
+*/
 
 #import <Foundation/Foundation.h>
 
+/**
+ Mapping service to access map
+ Setting Keys to display indoor map correctly
+ */
 @interface IntripperMapService : NSObject
 /**
 * Provides the shared instance of GMSServices for the Google Maps SDK for iOS,
@@ -33,6 +37,17 @@
  *
  * @return YES if the APIKey was successfully provided
  */
+
+/**
+ *Provides your API key to the Google Maps SDK for iOS.  This key is generated
+ * for your application via the Google APIs Console, and is paired with your
+ * application's bundle ID to identify it.  This should be called exactly once
+ * by your application, e.g., in application: didFinishLaunchingWithOptions:.
+
+ @param APIKey Key provided by Intripper
+ @param mapkey Google map key by Google API console
+ @return YES if the APIKey was successfully provided
+ */
 + (BOOL)provideAPIKey:(NSString *)APIKey andGMSMapKey:(NSString *)mapkey;
 
 /**
@@ -50,4 +65,6 @@
  * Returns API Key for Intripper usage.
  */
 -(NSString *)intripperApiKey;
+
+-(NSString *)endpointURL;
 @end
