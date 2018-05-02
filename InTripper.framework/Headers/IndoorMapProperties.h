@@ -171,6 +171,16 @@
 -(NSString *)MapboxFloorPlanID:(int)ioFloor;
 
 /**
+ To get Mapbox floor id for floor
+ 
+ @param ioFloor floor number
+ @param buildingid building number
+ @return Mapbox floor ID
+ */
+-(NSString *)MapboxFloorPlanID:(int)ioFloor forBuilding:(NSString *) buildingid;
+
+
+/**
  To fetch Mapbox token
 
  @return Mapbox token
