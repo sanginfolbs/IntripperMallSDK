@@ -295,4 +295,8 @@
  @return Position topleft, topright, bottomleft, bottomright
  */
 -(NSString *)defaultLogoLocation;
+
+-(int)getPromotionSnoozeTime;//In minutes
+
+-(int)getReRouteCoolDownTime;//In Seconds
 @end

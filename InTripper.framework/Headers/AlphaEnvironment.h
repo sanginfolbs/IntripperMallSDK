@@ -26,6 +26,7 @@ extern NSString *const kHIGHLIGHTCOLOR;
 extern NSString *const kFONTCOLORFORFLOOR;
 extern NSString *const kBlueDotIconPath;
 extern NSString *const kResourceBundle;
+extern NSString *const kCOLORFORCOVEREDPATH;
 //BOOL isUserInsideMall;
 //BOOL isLocationServiceEnabled;
 @interface AlphaEnvironment : NSObject
