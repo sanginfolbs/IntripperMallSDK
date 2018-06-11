@@ -494,6 +494,11 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 @property (nonatomic,readwrite) float labelHighlightStrokeWidth;
 
 /**
+ Enable auto centering user position if No activity on map for 10 second. Default No
+ */
+@property (nonatomic,readwrite) BOOL autoCenterUserPositionEnabled;
+
+/**
  *  Sets the navigation mode.
  *
  *  @param mode Navigation mode type (NavigationMode_None,NavigationMode_Preview,NavigationMode_TurnByTurn)
@@ -848,6 +853,8 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  @param pinView Image of POI
  */
 -(void)showPOIMarker:(NSDictionary *)poiinfo view:(UIView *)pinView;
+
+
 
 -(NSString *)IAAPIapikey;
 -(NSString *)IAAPIapiSecret;

@@ -299,4 +299,6 @@
 -(int)getPromotionSnoozeTime;//In minutes
 
 -(int)getReRouteCoolDownTime;//In Seconds
+
+-(int)getAutoCenteringTime;//In Seconds
 @end
