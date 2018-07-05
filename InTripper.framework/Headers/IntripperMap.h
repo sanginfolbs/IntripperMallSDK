@@ -29,8 +29,24 @@ typedef NS_ENUM(NSInteger,NavigationMode) {
      * Navigation with turn by turn instructions mode.
      */
     NavigationMode_TurnByTurn,
-    
-    
+};
+
+/**
+ *  Map View Modes
+ */
+typedef NS_ENUM(NSInteger,MapViewMode) {
+    /**
+     *  ViewMode ViewMode Unknown
+     */
+    MapViewMode_Unknown,
+    /**
+     *  ViewMode Center Preview
+     */
+    MapViewMode_CenterPreview,
+    /**
+     * Navigation with turn by turn instructions mode.
+     */
+    MapViewMode_HeadingPreview,
 };
 
 /**
@@ -412,6 +428,13 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 - (void)intripper:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position;
 
+/**
+ Called When map  view mode changed by User
+ @param mapView map
+ @param previewMode View mode Unknown/Center/heading
+ */
+- (void)intripper:(id)mapView didChangeMapMode:(MapViewMode)previewMode;
+
 @end
 /**
  *  This is the main class of InTripper SDK for IOS and is the entry point for all the methods related to maps.
@@ -477,7 +500,6 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 @property(nonatomic,retain) UIColor *textColor;
 
-
 /**
  Rotate map and keep user location pointing to upwoard only Default=false
  */
@@ -492,11 +514,6 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  * HighlightStrokeWidth for lable render on map
  */
 @property (nonatomic,readwrite) float labelHighlightStrokeWidth;
-
-/**
- Enable auto centering user position if No activity on map for 10 second. Default No
- */
-@property (nonatomic,readwrite) BOOL autoCenterUserPositionEnabled;
 
 /**
  *  Sets the navigation mode.
@@ -535,7 +552,14 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(void)setBlueDot:(CLLocation *)location onFloor:(int)level;
 
-
+//User Location
+/**
+ *  Sets the user's current position (blue dot) on the map (internal perpose only) DO NOT USE THIS METHOD.
+ *
+ *  @param location The location of the user's current position.
+ *  @param level    The floor level of the user's current position.
+ */
+-(void)setBlueDot_simulated:(CLLocation *)location onFloor:(int)level;
 
 /**
  *  Gets the user's current location.
@@ -664,11 +688,12 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 -(void)findAreaOnMap:(NSString *)storeid __deprecated_msg("use findPOIOnMap: instead");
 
 /**
- *  Finds an area/section on the map and displays a corresponding marker on the mapview.
- *
- *  @param poiid The unique ID of the area/section to be found.
- */
--(void)findPOIOnMap:(NSString *)poiid;
+* Finds an area/section on the map and displays a corresponding marker on the mapview.
+*
+* @param poiid The unique ID of the area/section to be found.
+* @param result
+*/
+-(void)findPOIOnMap:(NSString *)poiid completion:(void (^)(NSDictionary *poiinfo, NSError *error))result;
 
 //Indoor Positioning Services
 /**

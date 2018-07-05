@@ -296,9 +296,40 @@
  */
 -(NSString *)defaultLogoLocation;
 
+/**
+ Promotion Snooze Time
+
+ @return time in minutes
+ */
 -(int)getPromotionSnoozeTime;//In minutes
 
+/**
+ Re-Route CoolDown Time
+
+ @return Time in seconds
+ */
 -(int)getReRouteCoolDownTime;//In Seconds
 
 -(int)getAutoCenteringTime;//In Seconds
+
+/**
+URL From map image to be fetch
+
+ @return Tile URL
+ */
+-(NSString *)TileServerURL;//Tile server URL
+
+/**
+ Rotate map according true heading
+
+ @return True/False
+ */
+-(BOOL)shouldRotateMapWithHeading;
+
+/**
+ Rotate map to true north for user location
+
+ @return True/False
+ */
+-(BOOL)shouldRotateMapInitially;
 @end

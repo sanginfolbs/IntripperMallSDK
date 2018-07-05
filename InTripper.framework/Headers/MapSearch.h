@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger, SearchType) {
  *  Delegates for the events on MapSearch object.
  */
 @protocol MapSearchDelegate<NSObject>
+
+@optional
 /**
  *  Called when the user starts typing in the search box.
  *
@@ -47,6 +49,7 @@ typedef NS_ENUM(NSInteger, SearchType) {
  */
 @interface MapSearch : NSObject
  @property(nonatomic,weak) id <MapSearchDelegate> mapSearchDelegate;
+ 
 /**
  *  Initializes search API's
  *
@@ -80,5 +83,13 @@ typedef NS_ENUM(NSInteger, SearchType) {
  *  @param text The text/term to search for.
  */
 -(void)searching:(NSString *)text;
+
+/**
+ Performs the search operation by calling the relevant Search API's.
+
+ @param text text The text/term to search for
+ @param result result of search
+ */
+-(void)searching:(NSString *)text completion:(void (^)(NSArray *searchResult, NSError *error))result;
 
 @end
