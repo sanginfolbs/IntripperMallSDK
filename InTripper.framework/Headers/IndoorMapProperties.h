@@ -332,4 +332,11 @@ URL From map image to be fetch
  @return True/False
  */
 -(BOOL)shouldRotateMapInitially;
+
+/*
+ Allow Hybrid map to render on screen
+ 
+ @return True/False
+ */
+-(BOOL)allowHybridMap;
 @end

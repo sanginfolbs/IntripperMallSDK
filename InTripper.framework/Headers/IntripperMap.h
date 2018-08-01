@@ -691,7 +691,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 * Finds an area/section on the map and displays a corresponding marker on the mapview.
 *
 * @param poiid The unique ID of the area/section to be found.
-* @param result
+* @param result callback on result
 */
 -(void)findPOIOnMap:(NSString *)poiid completion:(void (^)(NSDictionary *poiinfo, NSError *error))result;
 
