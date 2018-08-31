@@ -54,6 +54,10 @@ typedef NS_ENUM(NSInteger,MapViewMode) {
  */
 typedef NS_ENUM(NSInteger,FloorConntectedBy) {
     /**
+     *  Unknown mode
+     */
+    FloorConntectedBy_Unknown,
+    /**
      *  Elevator
      */
     FloorConntectedBy_Elevator,

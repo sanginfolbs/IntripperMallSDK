@@ -339,4 +339,18 @@ URL From map image to be fetch
  @return True/False
  */
 -(BOOL)allowHybridMap;
+
+/*
+ Re-route buffer count
+ 
+ @return number of
+ */
+-(int)maxReroutePathDiversionCount;
+
+/*
+ Support Intripper Floor Change
+ 
+ @return Yes/No
+ */
+-(BOOL)supportIntripperFloorChange;
 @end
