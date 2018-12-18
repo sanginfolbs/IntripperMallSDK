@@ -75,4 +75,10 @@
  */
 -(BOOL)removeFromCache:(NSString *)cacheid;
 
+/**
+ Delete All from cache file
+ 
+ @param cacheRef Cache id
+ */
+-(void)cleanCache:(NSString *)cacheRef;
 @end

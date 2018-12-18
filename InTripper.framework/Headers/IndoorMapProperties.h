@@ -353,4 +353,25 @@ URL From map image to be fetch
  @return Yes/No
  */
 -(BOOL)supportIntripperFloorChange;
+
+
+/**
+ Use Intripper logic for floor Detection
+
+ @return Yes/No
+ */
+-(BOOL)applyIntripperFloorDetection;
+
+/**
+ Use Senser for Heading
+
+ @return Yes/No
+ */
+-(BOOL)useInbuildMagneticsensorForHeading;
+/**
+ Show Destination event reached
+ 
+ @return X meters
+ */
+-(int)getDestinationBuffer;
 @end

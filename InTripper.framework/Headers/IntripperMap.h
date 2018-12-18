@@ -69,10 +69,45 @@ typedef NS_ENUM(NSInteger,FloorConntectedBy) {
      * Staircase
      */
     FloorConntectedBy_Staircase,
-    
-    
 };
 
+
+/**
+ *  Destination Direction
+ */
+typedef NS_ENUM(NSInteger,DestinationDirection) {
+    /**
+     *  Non-Navigation mode
+     */
+    Destination_Left,
+    /**
+     *  Navigation Preview mode
+     */
+    Destination_Right,
+    /**
+     * Navigation with turn by turn instructions mode.
+     */
+     Destination_Front,
+};
+
+
+/**
+ Floor Change by event
+ */
+typedef NS_ENUM(NSInteger,FloorChangeReason) {
+    /**
+     *  by user
+     */
+    changedby_Manual,
+    /**
+     *  by location provider
+     */
+    changedby_LocationProvider,
+    /**
+     *  by app internal
+     */
+    changedby_Programmatic,
+};
 
 /**
  *  Description
@@ -99,7 +134,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 
 /**
  Called after map loaded on screen
- 
+
  @param sender  the mapview that passed
  @param isLoaded true/false always return true
  */
@@ -160,6 +195,16 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param routeInfo The area/section data
  */
 -(void)intripper:(id)mapView instruction:(NSUInteger)pathIndex pathInfo:(NSDictionary *)routeInfo;
+
+/**
+  Called when user wants turn by turn instructions.
+
+ @param mapView The mapview where the route for turn by turn is drawn.
+ @param pathIndex The index of the area/section.
+ @param routeInfo The area/section data
+ @param isByUser Action trigger by User or internal.
+ */
+-(void)intripper:(id)mapView instruction:(NSUInteger)pathIndex pathInfo:(NSDictionary *)routeInfo triggerByUserInteaction:(BOOL)isByUser;
 /**
  *  Called when a user is in navigation mode and moves away from the drawn route.
  *
@@ -185,6 +230,16 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param level   The level of the floor change.
  */
 -(void)intripper:(id)mapView onFloorChange:(int)level;
+
+
+/**
+ Called when change in floor is detected.
+
+ @param mapView The mapview that caused the event to trigger.
+ @param level The level of the floor change
+ @param isByUser detect trigger by user or not
+ */
+-(void)intripper:(id)mapView onFloorChange:(int)level triggerByUserInteaction:(BOOL)isByUser;
 /**
  *  Called after a double tap gesture is detected on floor selector.
  *
@@ -220,9 +275,29 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  Called when the user arrives at the destination in navigation mode.
  *
  *  @param mapView The mapview
- *  @param navigationState YES if user is arriving near the destination.
+ *  @param navigationend YES if user is arriving near the destination.
  */
--(void)intripper:(id)mapView endNavigation:(BOOL)navigationState;
+-(void)intripper:(id)mapView endNavigation:(BOOL)navigationend;
+
+
+/**
+ Called when user explicit exit navigation
+
+ @param mapView The mapview
+ @param navigationState True when user exit navigation
+ */
+-(void)intripper:(id)mapView navigationExited:(BOOL)navigationState;
+
+
+/**
+ Called when the user arrives at the destination in navigation mode.
+
+ @param mapView The mapview
+ @param navigationState YES if user is arriving near the destination.
+ @param atDirection direction of destination.
+ */
+-(void)intripper:(id)mapView endNavigation:(BOOL)navigationState destinationDirection:(DestinationDirection) atDirection;
+
 
 /**
  *  Called when a marker is about to become selected and provides an optional
@@ -345,6 +420,17 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 
  @param mapview The mapview where level marker render
  @param imgPin image from SDK
+ @param floorChangeMode floor change Using mode
+ @param up Moving up direction
+ @return View to display on map
+ */
+-(UIView *)intripper:(id)mapview customizeLevelChangedMarker:(UIImage *)imgPin mode:(FloorConntectedBy)floorChangeMode movingUp:(BOOL)up;
+
+/**
+ Customize level changed marker
+
+ @param mapview The mapview where level marker render
+ @param imgPin image from SDK
  @param up Moving up direction
  @param nearStart  atstart point
  @return View to display on map
@@ -364,7 +450,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 
 /**
  Anchor point where marker render default(.0,.5)
- 
+
  @param mapview The mapview where level marker render
  @param refAnchor SDK marker point
  @return Changed marker point
@@ -392,7 +478,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 -(CGPoint)intripper:(id)mapview BuildingChangedMarkerAnchor:(CGPoint)refAnchor __deprecated_msg("use intripper: buildingChangedMarkerAnchor: instead.");
 /**
  Customize building anchor
- 
+
  @param mapview The mapview where level marker render
  @param refAnchor anchore point set by sdk
  @return new Anchor point
@@ -439,6 +525,16 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 - (void)intripper:(id)mapView didChangeMapMode:(MapViewMode)previewMode;
 
+
+/**
+ Apply jump logic and handle jump supress event
+
+ @param mapView UI Map
+ @param jumppoint location point for false reading
+ @param jumpdistance distance of false reading
+ */
+- (void)intripper:(id)mapView jumpsupress:(CGIndoorMapPoint)jumppoint atdistance:(double)jumpdistance;
+
 @end
 /**
  *  This is the main class of InTripper SDK for IOS and is the entry point for all the methods related to maps.
@@ -472,6 +568,12 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  Highlight store on navagation mode default=NO
  */
 @property (nonatomic,readwrite) BOOL showAreaDuringNavigation;
+
+/**
+ *  Sets Style to map (add same name of JSON file in resource bundle and set only filename here without extension).
+ */
+@property (nonatomic,retain) NSString *mapStyle;
+
 /**
  *  Gets the current Navigation mode. default=NavigationMode_None
  */
@@ -488,10 +590,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  Controls whether the mapview's inbuilt floor selector is to be shown. Set NO if the application wants to create custom floor selector.
  */
 @property (nonatomic,readwrite) BOOL enableFloorSelector;
-/**
- *  Is User OnSite or not
- */
-@property (nonatomic,readwrite) BOOL onSite;
+
 
 /**
  *  Show/Hide map provider logo on map, Default show
@@ -614,6 +713,12 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param cutAtEnterance BOOL flag
  */
 -(void)findRoute:(CGIndoorMapPoint)startPoint destination:(CGIndoorMapPoint)endPoint uptoDoor:(BOOL)cutAtEnterance;
+
+/**
+ *  Start the navigation when user's navigation mode is NavigationMode_TurnByTurn
+ */
+-(void)startNavigation;
+
 /**
  *  Ends the navigation when user's navigation mode is NavigationMode_TurnByTurn
  */
@@ -662,6 +767,22 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param floor The floor to be set.
  */
 - (void) changeFloor:(int) floor;
+
+/**
+ Called this method if floor changed by location provider
+
+ @param floor new Floor number
+ */
+- (void) changeFloorByLocationProvider:(int) floor;
+
+/**
+ Called this method if floor changed by event
+
+ @param floor new Floor number
+ @param byEvent by event
+ */
+- (void) changeFloor:(int) floor reason:(FloorChangeReason)byEvent;
+
 /**
  *  Removes current markers from the mapview.
  */
@@ -709,13 +830,6 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(NSString *) locationFloorRef:(int) floor;
 
-/**
- *  External Floor refrence id
-
- *  @param floorref Floor number
- 
- *  @return refrence number
- */
 
 /**
  External Floor refrence id
@@ -883,8 +997,39 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(void)showPOIMarker:(NSDictionary *)poiinfo view:(UIView *)pinView;
 
+/**
+ Intripper Secure API call
+
+ @param apiname name of api
+ @param apiparam api parameter
+ @param response result
+ */
+-(void)intripperApi:(NSString *)apiname andParameter:(NSDictionary *)apiparam result:(void (^)(NSArray *apiresponse, NSError *error))response;
 
 
--(NSString *)IAAPIapikey;
--(NSString *)IAAPIapiSecret;
+/**
+ Geting venue information
+
+ @param VenueID VenueID
+ @param response venueinfo
+ */
++(void)getVenueInfo:(NSString *)VenueID result:(void (^)(IntripperMap *venueinfo, NSError *error))response;
+
+
+/**
+ Return nearest enterance point for POI While navigation
+ @param destination search point
+ @param start start Navigation Point
+ @return nearest Enterance of poi
+ */
+-(CGIndoorMapPoint)calculateNearestEnterance:(CGIndoorMapPoint)destination from:(CGIndoorMapPoint)start;
+
+/**
+ Display path for given group index
+
+ @param pathGroupIndex group index
+ */
+-(void)showPathForGroupIndex:(NSString *)pathGroupIndex;
+
+
 @end
