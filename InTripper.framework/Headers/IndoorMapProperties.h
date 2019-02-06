@@ -374,4 +374,11 @@ URL From map image to be fetch
  @return X meters
  */
 -(int)getDestinationBuffer;
+
+/**
+ Color of text on map
+
+ @return color value
+ */
+-(UIColor *)textColorFromServer;
 @end
