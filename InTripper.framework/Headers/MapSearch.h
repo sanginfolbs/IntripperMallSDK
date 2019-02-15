@@ -77,6 +77,17 @@ typedef NS_ENUM(NSInteger, SearchType) {
  @return an instance of MapSearch class
  */
 -(id)init:(SearchType)searchFor withMapid:(int)map;
+
+
+/**
+ Initializes search API's
+
+ @param searchFor searchFor searchFor SearchType Search_POI/Search_Amenity
+ @param map ID of the map
+ @return an instance of MapSearch class
+ */
+-(id)init:(SearchType)searchFor withMapCode:(NSString *)map;
+
 /**
  *  Performs the search operation by calling the relevant Search API's.
  *

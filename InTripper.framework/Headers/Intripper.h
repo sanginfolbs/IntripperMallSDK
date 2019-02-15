@@ -6,26 +6,26 @@
   Copyright © 2017-18 InTripper. All rights reserved.
 */
 
-#import <InTripper/IntripperMap.h>
-#import <InTripper/IntripperAPI.h>
-#import <InTripper/IntripperMapService.h>
-#import <InTripper/IndoorMapObject.h>
-#import <InTripper/PathFormatter.h>
-#import <InTripper/MapSearch.h>
-#import <InTripper/THLabel.h>
-#import <InTripper/TrackingMarker.h>
-#import <InTripper/Preferences.h>
-#import <InTripper/NotificationEngine.h>
-#import <InTripper/LastKnownLocation.h>
-#import <InTripper/InAppNotification.h>
+#import "IntripperMap.h"
+#import "IntripperAPI.h"
+#import "IntripperMapService.h"
+#import "IndoorMapObject.h"
+#import "PathFormatter.h"
+#import "MapSearch.h"
+#import "THLabel.h"
+#import "TrackingMarker.h"
+#import "Preferences.h"
+#import "NotificationEngine.h"
+#import "LastKnownLocation.h"
+#import "InAppNotification.h"
 
-#import <InTripper/AlphaCacheManager.h>
-#import <InTripper/AlphaEnvironment.h>
-#import <InTripper/IndoorMapProperties.h>
-#import <InTripper/GoogleFloorButton.h>
-#import <InTripper/blackInfoWindow.h>
-#import <InTripper/IntripperLanguage.h>
-#import <InTripper/AnimatingTrainMarker.h>
-#import <InTripper/TrackingAreaMarker.h>
+#import "AlphaCacheManager.h"
+#import "AlphaEnvironment.h"
+#import "IndoorMapProperties.h"
+#import "GoogleFloorButton.h"
+#import "blackInfoWindow.h"
+#import "IntripperLanguage.h"
+#import "AnimatingTrainMarker.h"
+#import "TrackingAreaMarker.h"
 
 

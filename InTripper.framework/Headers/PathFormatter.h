@@ -40,4 +40,10 @@
  *  Sets the color of the selected path.
  */
 @property (nonatomic,retain) UIColor *selectedPathColor;
+
+/**
+ *  Sets the width of the selected path.
+ */
+@property (nonatomic,retain) NSNumber *selectedPathWidth;
+
 @end
