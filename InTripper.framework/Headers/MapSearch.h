@@ -49,7 +49,12 @@ typedef NS_ENUM(NSInteger, SearchType) {
  */
 @interface MapSearch : NSObject
  @property(nonatomic,weak) id <MapSearchDelegate> mapSearchDelegate;
- 
+
+/**
+ *  This use for filter search result using group tag.
+ */
+@property (nonatomic,strong) NSString *filterTag;
+
 /**
  *  Initializes search API's
  *

@@ -1080,4 +1080,18 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  */
 -(void)clearSearchedPOIs;
 
+/**
+ *  Gets the API key for the indoor positioning services.
+ *
+ *  @return The API key for the indoor positioning services.
+ */
+-(nonnull NSString *)IndoorServiceApikey;
+
+/**
+ *  Gets the API secret for the indoor positioning services.
+ *
+ *  @return The API secret for the indoor positioning services.
+ */
+-(nonnull NSString *)IndoorServiceApiSecret;
+
 @end

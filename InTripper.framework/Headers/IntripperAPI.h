@@ -102,6 +102,15 @@
  @param response
  */
 -(void)getSearch:(NSString *)q language:(NSString *)forLanguage result:(void (^)(NSArray *posts, NSError *error))response;
+/**
+ Search poi on server
+ 
+ @param q search paramenter
+ @param tag search group parameter
+ @param forLanguage language
+ @param response
+ */
+-(void)getSearch:(NSString *)q tag:(NSString *)tag language:(NSString *)forLanguage result:(void (^)(NSArray *posts, NSError *error))response;
 
 /**
  get movie list
