@@ -381,4 +381,8 @@ URL From map image to be fetch
  @return color value
  */
 -(UIColor *)textColorFromServer;
+/**
+ * Cleanup IndoorMap setting from memory
+ */
+-(void)clearMemory;
 @end

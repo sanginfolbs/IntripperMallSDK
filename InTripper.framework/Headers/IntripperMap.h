@@ -615,7 +615,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
 /**
  *  IntripperMapDelegate delegate
  */
-@property(nonatomic,weak) id <IntripperMapDelegate> mapdelegate;
+@property(weak) id <IntripperMapDelegate> mapdelegate;
 /**
  *  S Navigation  path
  */
@@ -1093,5 +1093,8 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @return The API secret for the indoor positioning services.
  */
 -(nonnull NSString *)IndoorServiceApiSecret;
-
+/**
+ * Cleanup IndoorMap and GoogleMap
+ */
+-(void)stopRenderingMap;
 @end
