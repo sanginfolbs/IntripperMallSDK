@@ -147,7 +147,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  @param sender the mapview that passed
  @param error error detail
  */
--(void)intripper:(nonnull id)sender onVenueError:(NSException *)error;
+-(void)intripper:(nonnull id)sender onVenueError:(nonnull NSException *)error;
 
 /**
  *  Called after a long-press gesture at a particular coordinate.
