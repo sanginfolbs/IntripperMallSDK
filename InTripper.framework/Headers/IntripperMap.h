@@ -1097,4 +1097,12 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  * Cleanup IndoorMap and GoogleMap
  */
 -(void)stopRenderingMap;
+
+    /**
+     Check Location inside indoor venue
+
+     @param latLng location to check
+     @param result check is location with in boundry of indoor venue
+     */
+    -(void)isInsideVenue:(CLLocationCoordinate2D) latLng completion:(void (^_Nullable)(BOOL insideVenue, NSError * _Nullable error))result;
 @end
