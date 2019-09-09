@@ -554,7 +554,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  @param mapview map view
  @param poiinfo more information about poi defined
  */
--(void)intripper:(nonnull id)mapview onSearchedPOISelected:(nonnull NSDictionary *)poiinfo;
+-(void)intripper:(nonnull id)mapview onSearchedPOISelected:(nullable NSDictionary *)poiinfo;
 
 /**
  called if user position changed while navigation node
