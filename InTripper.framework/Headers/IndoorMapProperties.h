@@ -381,6 +381,14 @@ URL From map image to be fetch
  @return color value
  */
 -(UIColor *)textColorFromServer;
+
+/**
+Get Walking speed for venue
+
+@return X minute/meters
+*/
+-(double)getWalkingSpeedPerMeter;
+
 /**
  * Cleanup IndoorMap setting from memory
  */

@@ -187,7 +187,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param mapView   The mapview where the route will be drawn.
  *  @param routeList An array of geojson objects
  */
--(void)intripper:(nonnull id)mapView route:(NSArray *)routeList;
+-(void)intripper:(nonnull id)mapView route:(nonnull NSArray *)routeList;
 
 /**
  Called when search route failed to get route
@@ -195,7 +195,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  @param mapView The mapview where the route will be drawn.
  @param routeList empty route list
  */
--(void)intripper:(nonnull id)mapView noRoute:(NSArray *)routeList;
+-(void)intripper:(nonnull id)mapView noRoute:(nonnull NSArray *)routeList;
 /**
  *  Called when user wants turn by turn instructions.
  *
@@ -554,7 +554,15 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  @param mapview map view
  @param poiinfo more information about poi defined
  */
--(void)intripper:(nonnull id)mapview onSearchedPOISelected:(NSDictionary *)poiinfo;
+-(void)intripper:(nonnull id)mapview onSearchedPOISelected:(nonnull NSDictionary *)poiinfo;
+
+/**
+ called if user position changed while navigation node
+ 
+ @param mapview map view
+ @param navigationStatusUpdated more information Navigation  time remaining in seconds, Distance to be covered in meters, walking speed
+ */
+-(void) intripper:(nonnull id)mapview onNavigationStatusUpdated:(nonnull NSDictionary *)navigationStatusUpdated;
 
 @end
 /**
