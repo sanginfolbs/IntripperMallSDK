@@ -388,7 +388,26 @@ Get Walking speed for venue
 @return X minute/meters
 */
 -(double)getWalkingSpeedPerMeter;
+    /**
+     Get Map orientation
+     
+     @return X angle againt north direction (in degree)
+     */
+    
+    -(float) mapInitialRotation;
+    
+    /**
+     Get Map Tilt position
+     
+     @return X tilt angle (in degree)
+     */
+    -(float) mapInitialTilt;
+/**
+Use Reroute by Heading
 
+@return Yes/No
+*/
+-(bool)useRerouteUsingBearing;
 /**
  * Cleanup IndoorMap setting from memory
  */

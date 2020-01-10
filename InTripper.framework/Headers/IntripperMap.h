@@ -13,6 +13,8 @@
 #import "TrackingMarker.h"
 #import "TrackingAreaMarker.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "WayPoints.h"
+
 /**
  *  Navigation Modes
  */
@@ -758,6 +760,14 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @param cutAtEnterance BOOL flag
  */
 -(void)findRoute:(CGIndoorMapPoint)startPoint destination:(CGIndoorMapPoint)endPoint uptoDoor:(BOOL)cutAtEnterance;
+
+/**
+*  Finds the path from the source to the destinations. It has an option to end the path at the entrance or inside the store. This choice is useful when a path needs to be ended at the entrance (in case of stores) or inside (in case of a POI located inside the store)
+*
+*  @param startPoint     Source Coordinates
+*  @param endPoint       Destination Coordinates
+*/
+-(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<WayPoints *> *_Nonnull)endPoints;
 
 /**
  *  Start the navigation when user's navigation mode is NavigationMode_TurnByTurn
