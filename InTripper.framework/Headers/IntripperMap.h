@@ -198,6 +198,15 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  @param routeList empty route list
  */
 -(void)intripper:(nonnull id)mapView noRoute:(nonnull NSArray *)routeList;
+
+/**
+Called when search route function failed
+
+@param mapView The mapview where the route will be drawn.
+@param errorInfo Detail error description
+*/
+-(void)intripper:(nonnull id)mapView onNavigationError:(nonnull NSError *)errorInfo;
+
 /**
  *  Called when user wants turn by turn instructions.
  *
@@ -1111,6 +1120,7 @@ typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
  *  @return The API secret for the indoor positioning services.
  */
 -(nonnull NSString *)IndoorServiceApiSecret;
+
 /**
  * Cleanup IndoorMap and GoogleMap
  */

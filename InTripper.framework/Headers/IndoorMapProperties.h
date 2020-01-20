@@ -408,6 +408,21 @@ Use Reroute by Heading
 @return Yes/No
 */
 -(bool)useRerouteUsingBearing;
+
+/**
+ Image For Multipoint POI Item
+
+@return Image nameOnserver
+*/
+-(NSString * _Nullable)multiPointNavImage;
+
+
+/**
+ Number of items in searching Multiple waypoint
+
+@return no of count
+*/
+-(int)multiPointNavLimit;
 /**
  * Cleanup IndoorMap setting from memory
  */
