@@ -3,7 +3,7 @@
   Intripper
 
   Created by apple on 08/10/19.
-  Copyright © 2019 InTripper. All rights reserved.
+  Copyright © 2020 InTripper. All rights reserved.
 */
 
 #import <GoogleMaps/GoogleMaps.h>

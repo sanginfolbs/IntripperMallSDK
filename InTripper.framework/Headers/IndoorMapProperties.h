@@ -3,7 +3,7 @@
 //  gpsindoor
 //
 //  Created by Intripper on 28/03/19.
-//  Copyright (c) 2015 indooratlas. All rights reserved.
+//  Copyright (c) 2020 Intripper. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

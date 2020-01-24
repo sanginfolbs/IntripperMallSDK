@@ -1,9 +1,9 @@
 //
 //  NotificationEngine.h
-//  InMaps
+//  InTripper
 //
-//  Created by Intripper on 15/11/13.
-//  Copyright (c) 2013 InTripper. All rights reserved.
+//  Created by Intripper on 15/11/19.
+//  Copyright (c) 2020 InTripper. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -3,7 +3,7 @@
 *  Intripper
 *
 *  Created by Intripper on 20/01/19.
-*  Copyright © 2019-18 InTripper. All rights reserved.
+*  Copyright © 2020 InTripper. All rights reserved.
 */
 
 #import <UIKit/UIKit.h>

@@ -1,6 +1,6 @@
 //
 //  GoogleFloorButton.h
-//  InMaps
+//  InTripper
 //
 //  Created by Intripper on 25/09/19.
 //  Copyright (c) 2020 InTripper. All rights reserved.
