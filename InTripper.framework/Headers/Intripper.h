@@ -2,8 +2,8 @@
   Intripper.h
   Intripper
 
-  Created by Sanginfo on 19/01/16.
-  Copyright © 2017-18 InTripper. All rights reserved.
+  Created by InTripper on 19/01/19.
+  Copyright © 2019-18 InTripper. All rights reserved.
 */
 
 #import "IntripperMap.h"

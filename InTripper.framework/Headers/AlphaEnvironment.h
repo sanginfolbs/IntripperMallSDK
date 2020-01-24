@@ -1,9 +1,9 @@
 //
 //  Enviroment.h
-//  shoppingmall
+//  Intripper
 //
-//  Created by Sang.Mac.04 on 01/09/14.
-//  Copyright (c) 2014 InTripper. All rights reserved.
+//  Created by Intripper on 01/09/19.
+//  Copyright (c) 2020 InTripper. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

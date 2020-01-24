@@ -2,8 +2,8 @@
 *  @header IntripperMap.h
 *  Intripper
 *
-*  Created by Intripper on 20/01/16.
-*  Copyright © 2017-18 InTripper. All rights reserved.
+*  Created by Intripper on 20/01/19.
+*  Copyright © 2019-18 InTripper. All rights reserved.
 */
 
 #import <UIKit/UIKit.h>
@@ -13,7 +13,7 @@
 #import "TrackingMarker.h"
 #import "TrackingAreaMarker.h"
 #import <GoogleMaps/GoogleMaps.h>
-#import "WayPoints.h"
+#import "WayPoint.h"
 
 /**
  *  Navigation Modes
@@ -776,7 +776,7 @@ Called when search route function failed
 *  @param startPoint     Source Coordinates
 *  @param endPoint       Destination Coordinates
 */
--(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<WayPoints *> *_Nonnull)endPoints;
+-(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<WayPoint *> *_Nonnull)endPoints;
 
 /**
  *  Start the navigation when user's navigation mode is NavigationMode_TurnByTurn

@@ -2,8 +2,8 @@
   TrackingMarker.h
   Intripper
 
-  Created by Sanginfo on 08/02/16.
-  Copyright © 2017-18 InTripper. All rights reserved.
+  Created by InTripper on 08/02/19.
+  Copyright © 2019-18 InTripper. All rights reserved.
 */
 
 #import <GoogleMaps/GoogleMaps.h>

@@ -1,9 +1,9 @@
 //
 //  blackInfoWindow.h
-//  shoppingmall
+//  Intripper
 //
-//  Created by Sanginfo on 30/12/15.
-//  Copyright © 2015 InTripper. All rights reserved.
+//  Created by InTripper on 30/12/19.
+//  Copyright © 2020 InTripper. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

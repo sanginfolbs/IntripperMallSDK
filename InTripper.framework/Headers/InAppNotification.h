@@ -2,7 +2,7 @@
 //  InAppNotification.h
 //  Intripper
 //
-//  Created by Sang.Mac.04 on 29/10/13.
+//  Created by Intripper on 29/10/13.
 //  Copyright (c) 2013 InTripper. All rights reserved.
 //
 

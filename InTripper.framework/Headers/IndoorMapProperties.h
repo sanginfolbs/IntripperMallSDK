@@ -2,7 +2,7 @@
 //  MapProperties.h
 //  gpsindoor
 //
-//  Created by Sang.Mac.04 on 28/03/15.
+//  Created by Intripper on 28/03/19.
 //  Copyright (c) 2015 indooratlas. All rights reserved.
 //
 

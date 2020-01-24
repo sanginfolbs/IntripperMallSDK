@@ -1,8 +1,8 @@
 //
 //  CacheManager.h
 //
-//  Created by Sang.Mac.04 on 22/07/14.
-//  Copyright (c) 2014 InTripper. All rights reserved.
+//  Created by Intripper on 22/07/19.
+//  Copyright (c) 2020 InTripper. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

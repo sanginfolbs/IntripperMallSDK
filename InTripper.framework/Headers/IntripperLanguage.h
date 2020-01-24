@@ -2,8 +2,8 @@
 //  IntripperLanguage.h
 //  Intripper
 //
-//  Created by apple on 22/08/17.
-//  Copyright © 2017 InTripper. All rights reserved.
+//  Created by apple on 22/08/19.
+//  Copyright © 2019 InTripper. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
