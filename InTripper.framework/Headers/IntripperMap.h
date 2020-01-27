@@ -13,7 +13,7 @@
 #import "TrackingMarker.h"
 #import "TrackingAreaMarker.h"
 #import <GoogleMaps/GoogleMaps.h>
-#import "WayPoint.h"
+#import "Stopover.h"
 
 /**
  *  Navigation Modes
@@ -776,7 +776,7 @@ Called when search route function failed
 *  @param startPoint     Source Coordinates
 *  @param endPoint       Destination Coordinates
 */
--(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<WayPoint *> *_Nonnull)endPoints;
+-(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints;
 
 /**
  *  Start the navigation when user's navigation mode is NavigationMode_TurnByTurn
