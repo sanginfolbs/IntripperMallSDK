@@ -67,4 +67,6 @@
 -(NSString *)intripperApiKey;
 
 -(NSString *)endpointURL;
+
+-(NSString *)IntripperURL;
 @end

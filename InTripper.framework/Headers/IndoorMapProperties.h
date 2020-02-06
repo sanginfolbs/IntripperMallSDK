@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "IndoorMapObject.h"
-
+#import "PathFormatter.h"
 /**
  Internal map Information
  */
@@ -416,7 +416,20 @@ Use Reroute by Heading
 */
 -(NSString * _Nullable)multiPointNavImage;
 
+/**
+ Return font family for map
 
+@return Font Font name on server
+*/
+-(NSString * _Nonnull)mapFont;
+/**
+ Return font family for map
+
+@return Font Font name on server
+*/
+-(PathFormatter * _Nonnull)pathFormat;
+
+-(float)lableStrokeWidth;
 /**
  Number of items in searching Multiple waypoint
 

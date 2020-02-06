@@ -118,7 +118,7 @@ typedef NS_ENUM(NSInteger,FloorChangeReason) {
  *
  *  @return return value description
  */
-typedef PathFormatter* (^PathFormatterBlock)(PathFormatter *formatter);
+typedef PathFormatter* _Nullable (^PathFormatterBlock)(PathFormatter * _Nullable formatter);
 /**
  *  Delegates for the events on Intripper object.
  */
@@ -577,7 +577,7 @@ Called when search route function failed
 
 @end
 /**
- *  This is the main class of InTripper SDK for IOS and is the entry point for all the methods related to maps.
+ * This is the main class of InTripper SDK for IOS and is the entry point for all the methods related to maps.
  */
 @interface IntripperMap : UIViewController{
 }
@@ -586,6 +586,7 @@ Called when search route function failed
  *  Sets the VenueID for the map.
  */
 @property (nonatomic,retain) NSString *VenueID;
+
 
 /**
  Set Venue code for the map
@@ -638,7 +639,7 @@ Called when search route function failed
 /**
  *  S Navigation  path
  */
-@property (copy) PathFormatterBlock pathOptions;
+@property (copy) PathFormatterBlock _Nullable pathOptions;
 /**
  *  Controls whether the mapview's inbuilt floor selector is to be shown. Set NO if the application wants to create custom floor selector.
  */
@@ -654,7 +655,7 @@ Called when search route function failed
 /**
  Text color of label to render on map
  */
-@property(nonatomic,retain) UIColor *textColor;
+@property(nonatomic,retain) UIColor * _Nullable textColor;
 
 /**
  Rotate map and keep user location pointing to upwoard only Default=false
@@ -1133,4 +1134,11 @@ Called when search route function failed
      @param result check is location with in boundry of indoor venue
      */
     -(void)isInsideVenue:(CLLocationCoordinate2D) latLng completion:(void (^_Nullable)(BOOL insideVenue, NSError * _Nullable error))result;
+
+
+/// Compute sorted list of multiple stops
+/// @param startPoint User location
+/// @param endPoints List of Stops
+/// @param result  return sorted list of stops or error if any
+-(void)sortStopovers:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints completion:(void (^_Nullable)(NSArray<Stopover *> * _Nullable sortedList, NSError * _Nullable error))result;
 @end
