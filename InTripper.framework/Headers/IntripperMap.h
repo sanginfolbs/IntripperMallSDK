@@ -1121,6 +1121,8 @@ Called when search route function failed
  *  @return The API secret for the indoor positioning services.
  */
 -(nonnull NSString *)IndoorServiceApiSecret;
+-(CGIndoorMapPoint)toExtendedCoordinate:(CGIndoorMapPoint)geoSystem;
+-(CGIndoorMapPoint)toGEOCoordinate:(CGIndoorMapPoint)extendedSystem;
 
 /**
  * Cleanup IndoorMap and GoogleMap

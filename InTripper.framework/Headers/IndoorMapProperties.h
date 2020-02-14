@@ -436,6 +436,10 @@ Use Reroute by Heading
 @return no of count
 */
 -(int)multiPointNavLimit;
+
+/// Path optimization at SDK End
+-(float)dynamicSplitPath;
+
 /**
  * Cleanup IndoorMap setting from memory
  */

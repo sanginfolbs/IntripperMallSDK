@@ -18,4 +18,7 @@
  */
 @property(nonatomic,retain) NSNumber *level;
 
+/// Use GPS Coordinate System Default: true
+@property(nonatomic,readwrite) BOOL useGPSCoorinateSystem;
+
 @end
