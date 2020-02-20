@@ -776,8 +776,18 @@ Called when search route function failed
 *
 *  @param startPoint     Source Coordinates
 *  @param endPoint       Destination Coordinates
+*  @param endAt             Location where path end at
+*/
+-(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints endAt:(CGIndoorMapPoint)endPoint;
+
+/**
+*  Finds the path from the source to the destinations. It has an option to end the path at the entrance or inside the store. This choice is useful when a path needs to be ended at the entrance (in case of stores) or inside (in case of a POI located inside the store)
+*
+*  @param startPoint     Source Coordinates
+*  @param endPoint       Destination Coordinates
 */
 -(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints;
+
 
 /**
  *  Start the navigation when user's navigation mode is NavigationMode_TurnByTurn
@@ -1137,6 +1147,13 @@ Called when search route function failed
      */
     -(void)isInsideVenue:(CLLocationCoordinate2D) latLng completion:(void (^_Nullable)(BOOL insideVenue, NSError * _Nullable error))result;
 
+
+/// Compute sorted list of multiple stops
+/// @param startPoint User location
+/// @param endPoints List of Stops
+/// @param endAt Location where path end at
+/// @param result  return sorted list of stops or error if any
+-(void)sortStopovers:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints endAt:(CGIndoorMapPoint)endPoint completion:(void (^_Nullable)(NSArray<Stopover *> * _Nullable sortedList, NSError * _Nullable error))result;
 
 /// Compute sorted list of multiple stops
 /// @param startPoint User location

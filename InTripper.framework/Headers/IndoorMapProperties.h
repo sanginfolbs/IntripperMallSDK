@@ -440,6 +440,9 @@ Use Reroute by Heading
 /// Path optimization at SDK End
 -(float)dynamicSplitPath;
 
+/// map rotation while navigation mode
+-(BOOL)shouldRotateMapWithPathSegment;
+
 /**
  * Cleanup IndoorMap setting from memory
  */
