@@ -443,6 +443,9 @@ Use Reroute by Heading
 /// map rotation while navigation mode
 -(BOOL)shouldRotateMapWithPathSegment;
 
+/// Center map in navigation Mode
+-(BOOL)enableAutoCenteringInNavMode;
+
 /**
  * Cleanup IndoorMap setting from memory
  */
