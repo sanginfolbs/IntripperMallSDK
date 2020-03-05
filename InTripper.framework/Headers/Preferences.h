@@ -25,6 +25,7 @@ extern NSString *const PREF_ACCESSTOKEN;
 extern NSString *const PREF_BUDDYOPTIN;
 extern NSString *const PREF_CACHEVERSION;
 extern NSString *const PREF_COUNTRYCODE;
+extern NSString *const PREF_INTRIPPERLOGO;
 
 @interface Preferences : NSObject
 
