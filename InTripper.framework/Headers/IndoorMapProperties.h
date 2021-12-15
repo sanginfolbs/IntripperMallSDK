@@ -446,6 +446,9 @@ Use Reroute by Heading
 /// Center map in navigation Mode
 -(BOOL)enableAutoCenteringInNavMode;
 
+/// Show Google map 3d buldings on map for external view
+-(BOOL)show3DBuildings;
+
 /**
  * Cleanup IndoorMap setting from memory
  */

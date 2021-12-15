@@ -675,6 +675,8 @@ Called when search route function failed
 
 @property (nonatomic,assign) UIEdgeInsets logoPadding;
 
+@property (nonatomic,readwrite) BOOL displayPOIWithStopOverNavigation;
+
 /**
  *  Sets the navigation mode.
  *
